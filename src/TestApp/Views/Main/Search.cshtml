@@ -1,0 +1,63 @@
+﻿@model SearchViewModel
+@{
+    ViewBag.Title = "Search";
+}
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Search</h2>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-warning"></div>
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" placeholder="123 4th Street" />
+                <span asp-validation-for="Address" class="text-warning"></span>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label asp-for="City"></label>
+                    <input asp-for="City" class="form-control" placeholder="Beverly Hills" />
+                    <span asp-validation-for="City" class="text-warning"></span>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label asp-for="State"></label>
+                    <input asp-for="State" class="form-control" placeholder="CA" />
+                    <span asp-validation-for="State" class="text-warning"></span>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label asp-for="Zip"></label>
+                    <input asp-for="Zip" class="form-control" placeholder="90210" />
+                    <span asp-validation-for="Zip" class="text-warning"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 form-group">
+                    <div class="checkbox">
+                        <label asp-for="RentzEstimate">
+                            <input asp-for="RentzEstimate" />
+                            @Html.DisplayNameFor(m => m.RentzEstimate)
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <span><em>Please enter both <strong>City</strong> &amp; <strong>State</strong>, and/or <strong>Zip Code</strong></em></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-success" />
+                <a asp-controller="Main" asp-action="Search" class="btn btn-default">Clear</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        @{
+            if (Model != null && Model.Results != null)
+            {
+                @Html.Partial("Results", Model)
+            }
+        }
+    </div>
+</div>

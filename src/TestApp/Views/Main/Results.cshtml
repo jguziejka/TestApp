@@ -1,0 +1,74 @@
+﻿@model SearchViewModel
+
+<div>
+    <h3>Results</h3>
+    <div>
+        <div>
+            <label>@Model.Results.message?.text</label>
+            <div id="code"><label>Code: (@Model.Results.message?.code) </label></div>
+            <br /><br />
+        </div>
+        <div class="row">
+            <div id="address" class="col-sm-6">
+                <label>Address:</label><br />
+                <span>@Model.Results.response?.results?.result.address.street</span><br />
+                <span>@Model.Results.response?.results?.result.address.city, @Model.Results.response?.results?.result.address.state</span><br />
+                <span>@Model.Results.response?.results?.result.address.zipcode</span>
+            </div>         
+            <div id="estimate" class="col-sm-3">
+                <label>Estimate:</label><br />
+                <span>@Model.Results.response?.results?.result.zestimate.amount.currency</span>
+                <span>@Model.Results.response?.results?.result.zestimate.amount.Value</span>
+                <br />
+            </div>
+            <div id="rent" class="hide col-sm-3">
+                <label>Rent Estimate:</label><br />
+                <span>@Model.Results.response?.results?.result?.rentzestimate?.amount.currency</span>
+                <span>@Model.Results.response?.results?.result?.rentzestimate?.amount.Value</span>
+                <br />
+            </div>
+        </div>
+        <br /><br />
+        <div class="row">
+            <div id="links" class="col-sm-6">
+                <label>Links:</label>
+                <ul>
+                    <li><a target="_blank" href="@Model.Results.response?.results?.result.links.homedetails">Home Details</a></li>
+                    <li><a target="_blank" href="@Model.Results.response?.results?.result.links.graphsanddata">Graphs and Data</a></li>
+                    <li><a target="_blank" href="@Model.Results.response?.results?.result.links.mapthishome">Map This Home</a></li>
+                    <li><a target="_blank" href="@Model.Results.response?.results?.result.links.comparables">Comparables</a></li>
+                </ul>
+            </div>   
+            <div id="localLinks" class="col-sm-6">
+                <label>Local Real Estate Links</label>
+                <ul>
+                    <li><a target="_blank" href="@Model.Results.response?.results?.result.localRealEstate.region.links.overview">Overview</a></li>
+                    <li><a target="_blank" href="@Model.Results.response?.results?.result.localRealEstate.region.links.forSaleByOwner">For Sale By Owner</a></li>
+                    <li><a target="_blank" href="@Model.Results.response?.results?.result.localRealEstate.region.links.forSale">For Sale</a></li>
+                </ul>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+</div>
+<script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var code = @Model.Results.message.code;
+        if (code !== undefined && code === 0) {
+            $('#code').hide();
+        } else {
+            $('#address').hide();
+            $('#links').hide();
+            $('#estimate').hide();
+            $('#rent').hide();
+            $('#localLinks').hide();
+        }
+        var showRent = Boolean(@Model.RentzEstimate.ToString().ToLower());
+        if (showRent) {
+            $('#rent').removeClass('hide');
+        }
+    });
+</script>

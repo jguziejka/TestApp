@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test App - @ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/superhero/bootstrap.min.css" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a asp-controller="Main" asp-action="Search" class="navbar-brand">Search Test</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Main" asp-action="Index" class="navbar-brand">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="main" class="container-fluid">
+
+            <div>@RenderBody()</div>
+
+        </div>
+        <div id="footer" class="container-fluid">
+            <div class="navbar navbar-inverse navbar-fixed-bottom">
+                <h4 class="text-center text-info">&copy; 2016 Joey Guziejka</h4>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    @RenderSection("Scripts", false)
+
+</body>
+</html>
