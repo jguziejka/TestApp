@@ -19,13 +19,11 @@ namespace TestApp.Models
             {
                 request = XmlHelper.ConvertNode<request>(xRequest[0]);
             }
-
             var xMessage = xmlDoc.GetElementsByTagName("message");
             if (xMessage.Count > 0)
             {
                 message = XmlHelper.ConvertNode<message>(xMessage[0]);
             }
-
             var xResponse = xmlDoc.GetElementsByTagName("response");
             if (xResponse.Count > 0)
             {

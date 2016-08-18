@@ -3,13 +3,16 @@
 <head>
     <title>Test App - @ViewBag.Title</title>
     <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootswatch/superhero/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
 </head>
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
+                <img src="~/img/small-logo.png" class="logo" />
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a asp-controller="Main" asp-action="Search" class="navbar-brand">Search Test</a>
@@ -21,9 +24,7 @@
             </div>
         </nav>
         <div id="main" class="container-fluid">
-
             <div>@RenderBody()</div>
-
         </div>
         <div id="footer" class="container-fluid">
             <div class="navbar navbar-inverse navbar-fixed-bottom">
@@ -31,11 +32,8 @@
             </div>
         </div>
     </div>
-
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>    
     @RenderSection("Scripts", false)
-
 </body>
 </html>
