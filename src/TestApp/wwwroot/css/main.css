@@ -1,7 +1,7 @@
 ﻿
 .logo {
-    max-width: 42px;
-    padding: 3px;
+    max-width: 40px;
+    margin: 2px 10px 2px 4px;
 }
 
 .headshot {
@@ -10,3 +10,8 @@
     padding: 3px;
 }
 
+.changeBoot {
+    padding: 0 4px 0 6px;
+    margin: 0 10px 0 20px;
+    color: black;
+}
